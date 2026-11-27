@@ -35,6 +35,8 @@
     <button class="vt-btn" data-view="dashboard" role="tab">Dashboard</button>
     <button class="vt-btn" data-view="terminal" role="tab">Terminal</button>
     <button class="vt-btn" data-view="checkout" role="tab">Checkout</button>
+    <button class="vt-btn" data-view="billing" role="tab">Billing</button>
+    <button class="vt-btn" data-view="console" role="tab">Console</button>
     <span class="vt-glider"></span>
   </nav>
   <div class="top-actions">
@@ -57,12 +59,45 @@
 
   <nav class="mkt-nav" aria-label="Marketing">
     <div class="mkt-links">
-      <a href="#products">Products</a>
-      <a href="#business-types">Business types</a>
-      <a href="#hardware">Hardware</a>
-      <a href="#alfie">Alfie</a>
-      <a href="#developers">Developers</a>
-      <a href="#pricing">Pricing</a>
+      <div class="mkt-dd">
+        <button class="mkt-dd-btn" aria-haspopup="true" aria-expanded="false">Products <span class="dd-caret">▾</span></button>
+        <div class="mkt-dd-panel">
+          <a class="dd-item" href="#products"><strong>Point of sale</strong><small>Sell in person, online and everywhere</small></a>
+          <a class="dd-item" href="#hardware"><strong>Hardware</strong><small>Registers, terminals, readers and more</small></a>
+          <button class="dd-item" data-view-link="checkout"><strong>Online checkout</strong><small>What your customer sees before they pay</small></button>
+          <button class="dd-item" data-view-link="dashboard"><strong>Dashboard</strong><small>Your whole business, live</small></button>
+          <button class="dd-item" data-view-link="terminal"><strong>Terminal</strong><small>Try a sale on the Omni Register</small></button>
+          <a class="dd-item" href="#renpay"><strong>RenPay QR</strong><small>Card-free payment at the counter</small></a>
+        </div>
+      </div>
+      <div class="mkt-dd">
+        <button class="mkt-dd-btn" aria-haspopup="true" aria-expanded="false">Business types <span class="dd-caret">▾</span></button>
+        <div class="mkt-dd-panel">
+          <a class="dd-item" href="#business-types" data-bt-link="food"><strong>Food &amp; beverage</strong><small>Cafés, restaurants and bars</small></a>
+          <a class="dd-item" href="#business-types" data-bt-link="retail"><strong>Retail</strong><small>From first shop to flagship</small></a>
+          <a class="dd-item" href="#business-types" data-bt-link="beauty"><strong>Beauty &amp; wellness</strong><small>Salons, spas and studios</small></a>
+          <a class="dd-item" href="#business-types" data-bt-link="services"><strong>Professional services</strong><small>Invoices and payment links</small></a>
+        </div>
+      </div>
+      <div class="mkt-dd">
+        <button class="mkt-dd-btn" aria-haspopup="true" aria-expanded="false">Developers <span class="dd-caret">▾</span></button>
+        <div class="mkt-dd-panel">
+          <a class="dd-item" href="#developers"><strong>API overview</strong><small>Payments, orders, customers, payouts</small></a>
+          <a class="dd-item" href="#saas-billing"><strong>SaaS &amp; AI billing</strong><small>Subscriptions and usage billing via API</small></a>
+          <button class="dd-item" data-view-link="billing"><strong>Billing screen</strong><small>See SaaS billing running live</small></button>
+          <button class="dd-item" data-view-link="console"><strong>Developer Console</strong><small>Keys, requests and webhooks</small></button>
+        </div>
+      </div>
+      <a class="mkt-plain" href="#pricing">Pricing</a>
+      <div class="mkt-dd">
+        <button class="mkt-dd-btn" aria-haspopup="true" aria-expanded="false">Company <span class="dd-caret">▾</span></button>
+        <div class="mkt-dd-panel">
+          <a class="dd-item" href="#alfie"><strong>Alfie</strong><small>The finance that runs itself</small></a>
+          <a class="dd-item" href="#segments"><strong>Segments</strong><small>Who builds on Omni</small></a>
+          <a class="dd-item" href="https://renda-inc.github.io/Renda-GTM-Landing-Page---MUSE/" target="_blank" rel="noopener"><strong>Renda Banking</strong><small>Where Omni payouts land</small></a>
+          <a class="dd-item" href="#faq"><strong>FAQ</strong><small>Questions sellers ask</small></a>
+        </div>
+      </div>
     </div>
     <div class="mkt-nav-cta">
       <a class="link-quiet" href="#pricing">See pricing</a>
@@ -312,6 +347,40 @@ checkout.paymentMethods([
   "renpay_qr",   // ← scan, confirm, paid
 ]);</code></pre>
         <div class="code-foot"><span>200 OK · payment.completed</span><span class="mono">payout → Renda in 1 day</span></div>
+      </div>
+    </div>
+
+    <div class="saas-panel" id="saas-billing">
+      <div class="saas-copy">
+        <span class="eyebrow dark">SaaS &amp; AI billing</span>
+        <h3>Subscriptions and usage billing, through the same API</h3>
+        <p>Yes, Omni does this too, via API. Software, SaaS and AI companies bill with Omni the same way they take payments: recurring subscriptions, usage-based metering, trials, proration, invoices and smart dunning, all in one integration.</p>
+        <ul class="check-list">
+          <li>Recurring subscriptions with trials and proration built in</li>
+          <li>Usage events metered as they happen, billed on your schedule</li>
+          <li>Smart dunning: Alfie retries, updates cards and recovers revenue</li>
+        </ul>
+        <div class="saas-chips">
+          <span class="metric-chip"><strong>Real time</strong><small>MRR tracked as it moves</small></span>
+          <span class="metric-chip"><strong>Per second</strong><small>Usage events metered</small></span>
+          <span class="metric-chip"><strong>84% recovered</strong><small>Failed payments, by Alfie</small></span>
+        </div>
+        <button class="btn btn-grad" data-view-link="billing">Open the Billing screen</button>
+      </div>
+      <div class="code-card">
+        <div class="code-label">Create a subscription</div>
+        <pre class="code-body"><code>const sub = await omni.subscriptions.create({
+  customer: "cus_loopwork",
+  plan: "pro",
+  trialDays: 14,
+});</code></pre>
+        <div class="code-label">Report a usage event</div>
+        <pre class="code-body"><code>await omni.usage.record({
+  customer: "cus_loopwork",
+  metric: "api_calls",
+  quantity: 1200,
+});</code></pre>
+        <div class="code-foot"><span>subscription.created · usage.recorded</span><span class="mono">billed automatically</span></div>
       </div>
     </div>
   </div>
@@ -682,6 +751,159 @@ checkout.paymentMethods([
       <div class="receipt narrow"><div><span>Order</span><strong>#1043</strong></div><div><span>Receipt</span><strong>Sent to amara@example.com</strong></div><div><span>Payout</span><strong>Tomorrow, to Renda Smart Spend</strong></div></div>
       <div class="alfie-receipt center"><small>Alfie screened this payment, matched it to order #1043 and will set the HST aside when the payout lands.</small></div>
       <button class="btn btn-dark" id="co-again">Back to checkout</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================ -->
+<!-- ======================= BILLING VIEW ======================= -->
+<!-- ============================================================ -->
+<section class="view" id="view-billing">
+  <div class="dash-shell">
+    <aside class="dash-side">
+      <div class="dash-brand"><span class="omni-wordmark sm" role="img" aria-label="OMNI">OMNI<svg class="root-flow" viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden="true"><path d="M3 7 C35 3 55 11 82 7 C110 3 128 11 155 7 C172 4 186 8 197 6 M52 8 q4 6 -1 8 M101 7 q5 6 1 9 M149 8 q4 5 -1 8"/></svg></span></div>
+      <div class="biz-switch"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=200&q=70&auto=format&fit=crop" alt=""><div><strong>Loopwork AI</strong><small>Developer tools · SaaS</small></div><span>⌄</span></div>
+      <nav class="dash-nav">
+        <span class="nav-group">Billing</span>
+        <a class="active" href="#">Overview</a><a href="#">Subscriptions</a><a href="#">Usage</a><a href="#">Invoices</a>
+        <span class="nav-group">Manage</span>
+        <a href="#">Customers</a><a href="#">Dunning <span class="nav-badge">3</span></a><a href="#">Plans</a><a href="#">Settings</a>
+      </nav>
+      <div class="side-alfie"><div><span class="alfie-label">ALFIE</span><strong>Alfie is recovering revenue</strong><small>Retrying failed payments and updating expired cards as you bill.</small></div></div>
+      <div class="side-user"><span class="avatar">SR</span><div><strong>Sana Rao</strong><small>Founder</small></div></div>
+    </aside>
+
+    <div class="dash-main">
+      <div class="dash-head">
+        <div><span class="eyebrow dark">Loopwork AI · November</span><h2>Billing overview</h2></div>
+        <div class="dash-head-actions"><button class="btn btn-ghost-dark btn-sm" data-view-link="console">Developer Console</button><button class="btn btn-dark btn-sm">New plan</button></div>
+      </div>
+
+      <div class="kpi-row">
+        <article class="kpi-card"><span>Monthly recurring revenue</span><strong>$48,290</strong><small class="up">↑ 12.4% vs October</small></article>
+        <article class="kpi-card"><span>Active subscriptions</span><strong>1,284</strong><small>96 on free trials</small></article>
+        <article class="kpi-card"><span>Usage revenue, November</span><strong>$18,940</strong><small>Metered through the API</small></article>
+        <article class="kpi-card"><span>Failed payments</span><strong>23</strong><small>$2,314 at risk · Alfie is on it</small></article>
+      </div>
+
+      <div class="dash-grid">
+        <article class="panel chart-panel">
+          <div class="panel-head"><div><h3>API calls metered</h3><small>Usage events · Last 14 days</small></div><span class="chat-live">Live metering</span></div>
+          <div class="bars">
+            <div class="bar" style="height:38%"><i>2.1M</i></div><div class="bar" style="height:44%"><i>2.4M</i></div><div class="bar" style="height:52%"><i>2.9M</i></div><div class="bar" style="height:47%"><i>2.6M</i></div><div class="bar" style="height:63%"><i>3.5M</i></div><div class="bar" style="height:58%"><i>3.2M</i></div><div class="bar" style="height:72%"><i>4.0M</i></div><div class="bar" style="height:66%"><i>3.7M</i></div><div class="bar" style="height:84%"><i>4.7M</i></div><div class="bar" style="height:78%"><i>4.3M</i></div><div class="bar" style="height:92%"><i>5.1M</i></div><div class="bar" style="height:86%"><i>4.8M</i></div><div class="bar hot" style="height:100%"><i>5.6M</i></div><div class="bar" style="height:95%"><i>5.3M</i></div>
+          </div>
+          <div class="chart-axis"><span>Nov 13</span><span>Nov 16</span><span>Nov 19</span><span>Nov 22</span><span>Nov 26</span></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head"><h3>Usage by metric</h3><small>November, billed Dec 1</small></div>
+          <div class="top-row"><div class="top-main"><div><strong>API calls</strong><span>42.8M events</span></div><div class="prog"><i style="width:88%"></i></div></div><strong class="top-amt">$9,412</strong></div>
+          <div class="top-row"><div class="top-main"><div><strong>AI tokens</strong><span>1.9B tokens</span></div><div class="prog"><i style="width:70%"></i></div></div><strong class="top-amt">$7,605</strong></div>
+          <div class="top-row"><div class="top-main"><div><strong>Seats</strong><span>1,284 active</span></div><div class="prog"><i style="width:36%"></i></div></div><strong class="top-amt">$3,923</strong></div>
+          <p class="panel-note">Every event arrives through <span class="mono">omni.usage.record</span> and is rated against each customer’s plan automatically.</p>
+        </article>
+
+        <article class="panel span2">
+          <div class="panel-head"><h3>Subscriptions</h3><span class="mono-note">1,284 active · Showing largest</span></div>
+          <table class="tx-table"><thead><tr><th>Customer</th><th>Plan</th><th>Status</th><th>Next billing</th><th class="r">MRR</th></tr></thead>
+          <tbody>
+            <tr><td>Copperline Systems</td><td>Enterprise</td><td><span class="status ok">Active</span></td><td>Dec 1</td><td class="r">$4,800</td></tr>
+            <tr><td>Northwind Labs</td><td>Scale</td><td><span class="status ok">Active</span></td><td>Dec 1</td><td class="r">$1,450</td></tr>
+            <tr><td>Atlas Robotics</td><td>Usage</td><td><span class="status warn">Past due</span></td><td>Retrying</td><td class="r">$612</td></tr>
+            <tr><td>Helios Health</td><td>Pro</td><td><span class="status ok">Active</span></td><td>Dec 3</td><td class="r">$290</td></tr>
+            <tr><td>Fernway Studio</td><td>Pro</td><td><span class="status pend">Trialing</span></td><td>Dec 9</td><td class="r">$0</td></tr>
+          </tbody></table>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head"><h3>Dunning</h3><span class="alfie-label">ALFIE AT WORK</span></div>
+          <div class="dun-row"><p><strong>Atlas Robotics · $612</strong><small>Card declined, Nov 24. Alfie found a newer card on file.</small></p><div class="fc-actions"><button class="chip-btn grad" data-alfie-approve>Approve Alfie retry</button><span class="fc-done" hidden>Retry scheduled ✓</span></div></div>
+          <div class="dun-row"><p><strong>Beacon Legal · $290</strong><small>Card expired. Alfie emailed a one-tap update link.</small></p><div class="fc-actions"><button class="chip-btn grad" data-alfie-approve>Approve reminder</button><span class="fc-done" hidden>Reminder sent ✓</span></div></div>
+          <div class="dun-row"><p><strong>Kiln &amp; Co · $145</strong><small>Insufficient funds. Best retry window: payday, Nov 28.</small></p><div class="fc-actions"><button class="chip-btn grad" data-alfie-approve>Approve smart retry</button><span class="fc-done" hidden>Retry set for Nov 28 ✓</span></div></div>
+          <p class="panel-note">This month Alfie recovered <strong>$1,940 of $2,314</strong> in failed payments (84%) without Loopwork lifting a finger.</p>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head"><h3>Recent invoices</h3><small>Auto-sent by Omni</small></div>
+          <div class="payout-row"><div><strong>INV-2214 · Copperline Systems</strong><small>Enterprise · November usage included</small></div><span class="status ok">Paid</span></div>
+          <div class="payout-row"><div><strong>INV-2213 · Northwind Labs</strong><small>Scale plan · Prorated seat change</small></div><span class="status ok">Paid</span></div>
+          <div class="payout-row"><div><strong>INV-2212 · Atlas Robotics</strong><small>Usage only · Payment failed</small></div><span class="status warn">In dunning</span></div>
+          <div class="payout-row"><div><strong>INV-2211 · Helios Health</strong><small>Pro plan · Annual discount applied</small></div><span class="status pend">Sent</span></div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ======================= CONSOLE VIEW ======================= -->
+<!-- ============================================================ -->
+<section class="view" id="view-console">
+  <div class="wrap console-wrap">
+    <div class="sec-head left">
+      <span class="eyebrow dark">Omni Developers</span>
+      <h2>Developer Console</h2>
+      <p>Keys, test requests, live logs and webhooks for Loopwork AI, the same console every Omni developer gets.</p>
+    </div>
+
+    <div class="console-shell">
+      <aside class="console-side">
+        <span class="nav-group">Build</span>
+        <button class="console-item active">Quickstart</button>
+        <button class="console-item">Authentication</button>
+        <button class="console-item">Payments</button>
+        <button class="console-item">Subscriptions</button>
+        <button class="console-item">Usage</button>
+        <button class="console-item">Webhooks</button>
+        <button class="console-item">Errors</button>
+        <div class="console-env">
+          <span class="nav-group">Environment</span>
+          <div class="seg"><button class="seg-btn active" data-env="test">Test</button><button class="seg-btn" data-env="live">Live</button></div>
+          <small id="env-label">Test mode · Sandbox keys, no real money moves</small>
+        </div>
+      </aside>
+
+      <div class="console-main">
+        <article class="cpanel">
+          <div class="panel-head"><h3>API keys</h3><small>Keep live keys server-side only</small></div>
+          <div class="key-row"><span class="key-kind">Test</span><code id="test-key">omni_test_4f8c••••••••••••9d21</code><button class="chip-btn" id="copy-test-key">Copy</button></div>
+          <div class="key-row"><span class="key-kind live">Live</span><code id="live-key">omni_live_••••••••••••4e77</code><button class="chip-btn" id="reveal-live-key">Reveal</button></div>
+          <p class="panel-note">Rate limit: 100 requests/second in test, 1,000/second live. Keys roll instantly, with a 24-hour grace window for the old key.</p>
+        </article>
+
+        <article class="cpanel">
+          <div class="panel-head"><h3>Send a test request</h3><small>POST /v1/payments</small></div>
+          <div class="code-card">
+            <pre class="code-body"><code>const payment = await omni.payments.create({
+  amount: 4850, currency: "cad",
+  customer: "cus_loopwork",
+  idempotency_key: "console_test_01",
+});</code></pre>
+          </div>
+          <div class="run-row"><button class="btn btn-grad btn-sm" id="run-test">Run request</button><span class="mono-note">Runs against the sandbox. Watch the log below.</span></div>
+          <pre class="resp" id="test-response" hidden></pre>
+        </article>
+
+        <article class="cpanel">
+          <div class="panel-head"><h3>Recent API requests</h3><span class="mono-note">Streaming from the sandbox</span></div>
+          <table class="tx-table"><thead><tr><th>Time</th><th>Method</th><th>Endpoint</th><th>Status</th><th class="r">Latency</th></tr></thead>
+          <tbody id="api-log-body">
+            <tr><td>10:42:08</td><td><span class="pay-tag">POST</span></td><td class="mono">/v1/usage</td><td><span class="status ok">200</span></td><td class="r">96 ms</td></tr>
+            <tr><td>10:41:52</td><td><span class="pay-tag">POST</span></td><td class="mono">/v1/payments</td><td><span class="status ok">200</span></td><td class="r">182 ms</td></tr>
+            <tr><td>10:40:31</td><td><span class="pay-tag">POST</span></td><td class="mono">/v1/subscriptions</td><td><span class="status ok">201</span></td><td class="r">240 ms</td></tr>
+            <tr><td>10:39:17</td><td><span class="pay-tag">POST</span></td><td class="mono">/v1/payments</td><td><span class="status warn">402</span></td><td class="r">151 ms</td></tr>
+            <tr><td>10:38:03</td><td><span class="pay-tag">GET</span></td><td class="mono">/v1/invoices/inv_2214</td><td><span class="status ok">200</span></td><td class="r">74 ms</td></tr>
+          </tbody></table>
+        </article>
+
+        <article class="cpanel">
+          <div class="panel-head"><h3>Webhook endpoints</h3><small>Signed with your endpoint secret</small></div>
+          <div class="hook-row"><div><strong class="mono">https://api.loopwork.ai/webhooks/omni</strong><small>payment.completed · subscription.updated · usage.recorded</small></div><span class="status ok">Delivered</span></div>
+          <div class="hook-row"><div><strong class="mono">https://staging.loopwork.ai/hooks/omni</strong><small>payment.failed · invoice.finalized</small></div><span class="status warn">Retrying</span></div>
+          <p class="panel-note">Failed deliveries retry for 72 hours with backoff. Alfie flags endpoints that keep failing before your customers notice.</p>
+        </article>
+      </div>
     </div>
   </div>
 </section>

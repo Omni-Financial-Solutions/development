@@ -5,7 +5,7 @@ const $$ = (s, c=document) => [...c.querySelectorAll(s)];
 const money = n => "$" + n.toFixed(2);
 
 /* ---------- (a) View switching ---------- */
-const VIEWS = ["marketing","dashboard","terminal","checkout"];
+const VIEWS = ["marketing","dashboard","terminal","checkout","billing","console"];
 const glider = $(".vt-glider");
 function moveGlider(btn){
   if(!btn || !glider) return;
@@ -353,3 +353,74 @@ $$("[data-order-next]").forEach(btn => btn.addEventListener("click", () => {
 $$("[data-dismiss]").forEach(btn => btn.addEventListener("click", () => {
   const row = btn.closest(".stock-row"); if(row) row.hidden = true;
 }));
+
+/* ---------- (l) Marketing dropdowns + business-type links ---------- */
+function closeDropdowns(){
+  $$(".mkt-dd").forEach(dd => {
+    dd.classList.remove("open");
+    const b = dd.querySelector(".mkt-dd-btn"); if(b) b.setAttribute("aria-expanded","false");
+  });
+}
+$$(".mkt-dd-btn").forEach(btn => btn.addEventListener("click", e => {
+  e.stopPropagation();
+  const dd = btn.closest(".mkt-dd");
+  const wasOpen = dd.classList.contains("open");
+  closeDropdowns();
+  if(!wasOpen){ dd.classList.add("open"); btn.setAttribute("aria-expanded","true"); }
+}));
+document.addEventListener("click", e => { if(!e.target.closest(".mkt-dd")) closeDropdowns(); });
+document.addEventListener("keydown", e => { if(e.key === "Escape") closeDropdowns(); });
+$$(".mkt-dd-panel .dd-item").forEach(item => item.addEventListener("click", closeDropdowns));
+$$("[data-bt-link]").forEach(a => a.addEventListener("click", () => {
+  const tab = $(".bt-tab[data-bt=\"" + a.dataset.btLink + "\"]");
+  if(tab) tab.click();
+}));
+
+/* ---------- (m) Developer Console ---------- */
+$$(".console-item").forEach(item => item.addEventListener("click", () => {
+  $$(".console-item").forEach(i => i.classList.toggle("active", i === item));
+}));
+$$("[data-env]").forEach(btn => btn.addEventListener("click", () => {
+  $$("[data-env]").forEach(b => b.classList.toggle("active", b === btn));
+  const label = $("#env-label");
+  if(label) label.textContent = btn.dataset.env === "live"
+    ? "Live mode · Real payments, real payouts to Renda"
+    : "Test mode · Sandbox keys, no real money moves";
+}));
+const copyBtn = $("#copy-test-key");
+if(copyBtn) copyBtn.addEventListener("click", () => {
+  const key = $("#test-key");
+  if(key && navigator.clipboard) navigator.clipboard.writeText(key.textContent.trim()).catch(() => {});
+  copyBtn.textContent = "Copied";
+  setTimeout(() => { copyBtn.textContent = "Copy"; }, 1600);
+});
+const revealBtn = $("#reveal-live-key");
+if(revealBtn) revealBtn.addEventListener("click", () => {
+  const keyEl = $("#live-key"); if(!keyEl) return;
+  const full = "omni_live_7Kd2xQ9pLm4e77Zw";
+  const showing = keyEl.textContent === full;
+  keyEl.textContent = showing ? "omni_live_••••••••••••4e77" : full;
+  revealBtn.textContent = showing ? "Reveal" : "Hide";
+});
+const runBtn = $("#run-test");
+if(runBtn) runBtn.addEventListener("click", () => {
+  const resp = $("#test-response"); if(!resp) return;
+  const id = "pay_" + Date.now().toString(36);
+  resp.hidden = false;
+  resp.textContent =
+"200 OK · POST /v1/payments\n" +
+"{\n" +
+'  "id": "' + id + '",\n' +
+'  "amount": 4850, "currency": "cad",\n' +
+'  "status": "succeeded",\n' +
+'  "customer": "cus_loopwork",\n' +
+'  "payout": "renda:smart-spend, next day"\n' +
+"}";
+  const body = $("#api-log-body");
+  if(body){
+    const tr = document.createElement("tr");
+    tr.innerHTML = '<td>Just now</td><td><span class="pay-tag">POST</span></td><td class="mono">/v1/payments</td><td><span class="status ok">200</span></td><td class="r">182 ms</td>';
+    body.prepend(tr);
+  }
+  resp.scrollIntoView({behavior:"smooth", block:"nearest"});
+});
