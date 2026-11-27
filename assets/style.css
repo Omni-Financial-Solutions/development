@@ -558,3 +558,17 @@ h1,h2,h3,h4{font-family:var(--font-d);letter-spacing:-.02em;line-height:1.08}
 
 .topbar .omni-wordmark{font-size:27px}
 .root-flow{position:absolute;left:1%;bottom:-.04em;width:98%;height:.30em;overflow:visible;pointer-events:none}.root-flow path{fill:none;stroke:#79828C;stroke-width:4.5;stroke-linecap:round;opacity:.9}.on-dark .root-flow path{stroke:#C9CED6}
+
+.seg-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.seg-card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:34px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:14px}
+.seg-card.dark{background:var(--ink);color:#fff}
+.seg-card h3{font-size:26px}
+.seg-card p{color:var(--muted)}
+.seg-card.dark p{color:#C9CED6}
+.seg-tag{font-family:var(--font-d);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark)}
+.seg-tag.light{color:#C9CED6}
+.check-list.light li{color:#E7EAED}
+.seg-examples{font-size:14.5px}
+.seg-road{font-family:var(--font-d);font-weight:700;font-size:13.5px;color:#17191C;background:var(--grad);border-radius:999px;padding:9px 16px;align-self:flex-start}
+.seg-card .btn{align-self:flex-start;margin-top:auto}
+@media(max-width:860px){.seg-grid{grid-template-columns:1fr}}
