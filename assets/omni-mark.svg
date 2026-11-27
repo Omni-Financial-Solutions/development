@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" role="img" aria-label="OMNI mark">
+  <title>OMNI mark</title>
+  <!-- Simplified joined mark for small sizes / app icon / favicon:
+       the O joined into the M as one continuous rounded stroke,
+       white on ink, mint dot as the single accent. -->
+  <rect width="72" height="72" rx="16" fill="#0B0E11"/>
+  <path d="M39 36 A13 13 0 0 1 13 36 A13 13 0 0 1 39 36 L46 49 V23 L54 36 L62 23 V49"
+        fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" transform="translate(-4 0) scale(0.92)"/>
+  <circle cx="60" cy="12" r="3.4" fill="#00D084"/>
+</svg>

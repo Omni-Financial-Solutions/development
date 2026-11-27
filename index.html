@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omni — Payments that run the business | Omni Financial Solutions</title>
+<meta name="description" content="Omni is the payments side of Renda: smart terminals, online checkout and APIs, with Alfie running your financial operations alongside every payment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="assets/omni-mark.svg" type="image/svg+xml">
+<style id="omni-logo-styles">
+  /* OMNI logo: one continuous joined chain of rounded letters, O to M to N to I.
+     Never render OMNI as separate spaced letters or as a lone circle icon. */
+  .omni-logo{display:block;width:auto;height:34px;flex:none}
+  .omni-logo .omni-chain{fill:none;stroke:#0B0E11;stroke-width:11;stroke-linecap:round;stroke-linejoin:round}
+  .omni-logo .omni-dot{fill:#00D084}
+  .omni-logo.on-dark .omni-chain{stroke:#fff}
+  .omni-logo.sm{height:24px}
+  .omni-logo.lg{height:44px}
+  .brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none}
+  .brand .brand-name{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .foot-brand .omni-logo{height:38px}
+</style>
+</head>
+<body>
+
+<!-- ===== GLOBAL VIEW TOGGLE ===== -->
+<header class="topbar">
+  <a class="brand" href="#marketing" data-view-link="marketing" aria-label="OMNI home">
+    <svg class="omni-logo" viewBox="0 0 168 72" role="img" aria-label="OMNI"><path class="omni-chain" d="M48 40 A20 20 0 0 1 8 40 A20 20 0 0 1 48 40 L60 60 V20 L76 42 L92 20 V60 H104 V20 L132 60 V20 H148 V60"/><circle class="omni-dot" cx="148" cy="7" r="4.5"/></svg>
+    <span class="brand-name">OMNI</span>
+    <span class="brand-sub">by Renda</span>
+  </a>
+  <nav class="view-toggle" role="tablist" aria-label="Omni views">
+    <button class="vt-btn active" data-view="marketing" role="tab">Marketing</button>
+    <button class="vt-btn" data-view="dashboard" role="tab">Dashboard</button>
+    <button class="vt-btn" data-view="terminal" role="tab">Terminal</button>
+    <button class="vt-btn" data-view="checkout" role="tab">Checkout</button>
+    <span class="vt-glider"></span>
+  </nav>
+  <div class="top-actions">
+    <span class="demo-pill">Concept build</span>
+    <button class="btn btn-dark btn-sm" data-view-link="dashboard">Sign in</button>
+  </div>
+</header>
+
+<!-- OMNI LOGO, reusable for Dashboard sidebar, Terminal and Checkout brand spots:
+     clone #omni-logo-template (or copy the inline SVG used in the header/footer).
+     Do not substitute spaced text letters or the old circle-only mark.
+     On dark surfaces add class "on-dark" to the svg. -->
+<template id="omni-logo-template">
+  <svg class="omni-logo" viewBox="0 0 168 72" role="img" aria-label="OMNI"><path class="omni-chain" d="M48 40 A20 20 0 0 1 8 40 A20 20 0 0 1 48 40 L60 60 V20 L76 42 L92 20 V60 H104 V20 L132 60 V20 H148 V60"/><circle class="omni-dot" cx="148" cy="7" r="4.5"/></svg>
+</template>
+
+<main>
+<!-- ============================================================ -->
+<!-- ======================= MARKETING VIEW ===================== -->
+<!-- ============================================================ -->
+<section class="view active" id="view-marketing">
+
+  <nav class="mkt-nav" aria-label="Marketing">
+    <div class="mkt-links">
+      <a href="#products">Products</a>
+      <a href="#business-types">Business types</a>
+      <a href="#hardware">Hardware</a>
+      <a href="#alfie">Alfie</a>
+      <a href="#developers">Developers</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+    <div class="mkt-nav-cta">
+      <a class="link-quiet" href="#pricing">See pricing</a>
+      <button class="btn btn-mint btn-sm" data-view-link="checkout">Get started</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero wrap">
+    <div class="hero-card">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="dot-live"></span> Payments, powered by Alfie</span>
+        <h1>Take the payment.<br>Omni runs<br><em>everything after it.</em></h1>
+        <p class="hero-lede">Terminals, online checkout and APIs for every way your customers pay, with Alfie reconciling the sale, setting tax aside and moving the money to your Renda account. Automatically.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-mint btn-lg" data-view-link="terminal">Try the terminal</button>
+          <button class="btn btn-ghost-light btn-lg" data-view-link="dashboard">See the dashboard</button>
+        </div>
+        <div class="hero-proof">
+          <div><strong>2.4% + 15¢</strong><span>in-person, no monthly fee</span></div>
+          <div><strong>Next day</strong><span>payouts to Renda</span></div>
+          <div><strong>4.9 / 5</strong><span>from early sellers</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img class="hero-photo" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80&auto=format&fit=crop" alt="A customer paying at a café counter">
+        <div class="float-card fc-sale">
+          <div class="fc-row"><span class="fc-ico mint">✓</span><div><strong>Payment approved</strong><small>Visa •• 4242 · Maple &amp; Main Café</small></div><strong class="fc-amt">$48.50</strong></div>
+        </div>
+        <div class="float-card fc-alfie">
+          <div class="fc-row"><span class="alfie-mark">✦</span><div><strong>Alfie reconciled this sale</strong><small>$5.58 HST set aside · Receipt matched</small></div></div>
+          <div class="fc-actions"><button class="chip-btn" data-alfie-approve>Approve payout</button><span class="fc-done" hidden>Sent to Renda ✓</span></div>
+        </div>
+        <div class="float-card fc-renpay">
+          <div class="qr-mini" data-qr="56"></div>
+          <div><strong>Pay with RenPay</strong><small>No card needed. Scan, confirm, done.</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGO / TRUST STRIP -->
+  <div class="strip wrap">
+    <span>Powering payments for</span>
+    <strong>Maple &amp; Main</strong><strong>Northwind Roasters</strong><strong>Bloom Studio</strong><strong>Canal Market</strong><strong>Studio North</strong><strong>Harbour Pantry</strong>
+  </div>
+
+  <!-- PRODUCTS -->
+  <div class="section wrap" id="products">
+    <div class="sec-head">
+      <span class="eyebrow dark">One platform</span>
+      <h2>See your whole business click into place</h2>
+      <p>Every channel lands in the same place, so a sale is a sale, wherever it happens.</p>
+    </div>
+    <div class="prod-grid">
+      <article class="prod-card big">
+        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=1200&q=80&auto=format&fit=crop" alt="Taking a card payment in a shop">
+        <div class="prod-body"><h3>Take payments</h3><p>In person, online, over the phone or out in the field. Cards, tap, wallets, Interac and RenPay, all on one platform.</p><button class="text-link" data-view-link="terminal">Open the terminal →</button></div>
+      </article>
+      <article class="prod-card">
+        <div class="prod-body"><span class="p-ico">▦</span><h3>Run the day</h3><p>Items, inventory, staff and locations stay in sync across every device, in real time.</p><button class="text-link" data-view-link="dashboard">See it live →</button></div>
+      </article>
+      <article class="prod-card">
+        <div class="prod-body"><span class="p-ico">↗</span><h3>Control cash flow</h3><p>Payouts land in your Renda Smart Spend account the next day. Alfie keeps tax, savings and bills separated as money arrives.</p></div>
+      </article>
+      <article class="prod-card">
+        <div class="prod-body"><span class="p-ico">♥</span><h3>Keep customers close</h3><p>Digital receipts, loyalty and simple campaigns that welcome people back, built into checkout.</p></div>
+      </article>
+      <article class="prod-card">
+        <div class="prod-body"><span class="p-ico">{ }</span><h3>Build with APIs</h3><p>Payments, orders, customers and payouts through clean APIs and drop-in checkout. Sandbox in minutes.</p><a class="text-link" href="#developers">Read the docs →</a></div>
+      </article>
+    </div>
+  </div>
+
+  <!-- BUSINESS TYPES -->
+  <div class="section wrap" id="business-types">
+    <div class="sec-head">
+      <span class="eyebrow dark">Business types</span>
+      <h2>Built for the way you sell</h2>
+    </div>
+    <div class="bt-tabs" role="tablist" aria-label="Business types">
+      <button class="bt-tab active" data-bt="food">Food &amp; beverage</button>
+      <button class="bt-tab" data-bt="retail">Retail</button>
+      <button class="bt-tab" data-bt="beauty">Beauty &amp; wellness</button>
+      <button class="bt-tab" data-bt="services">Professional services</button>
+    </div>
+    <div class="bt-panel">
+      <div class="bt-copy">
+        <h3 id="bt-title">Cafés, restaurants and bars</h3>
+        <p id="bt-text">Counter, table or on the move. Split bills, tips and kitchen routing come standard, and RenPay QR at the counter keeps the line moving when cards are slow.</p>
+        <ul class="check-list" id="bt-points">
+          <li>Tableside and counter payments</li><li>Tips, tabs and bill splitting</li><li>RenPay QR for card-free payment</li>
+        </ul>
+        <div class="bt-stat"><strong id="bt-stat-num">450,000+</strong><span id="bt-stat-label">food and beverage sellers run on platforms like Omni globally</span></div>
+      </div>
+      <img class="bt-img" id="bt-img" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1200&q=80&auto=format&fit=crop" alt="Inside a café">
+    </div>
+  </div>
+
+  <!-- HARDWARE -->
+  <div class="section wrap" id="hardware">
+    <div class="sec-head">
+      <span class="eyebrow dark">Hardware</span>
+      <h2>Machines that look as smart as they work</h2>
+      <p>Free point-of-sale software on every device. No rental fees, no locked contracts. Omni devices are certified terminals from our manufacturing partners, branded OMNI and running Omni software, so payments and PCI stay with licensed processors, not on your counter.</p>
+    </div>
+    <div class="hw-grid">
+      <article class="hw-card featured">
+        <span class="hw-tag">Best for counters</span>
+        <div class="device dev-register"><div class="dev-screen"><span class="dev-total">$48.50</span><small>Tap, insert or scan</small><div class="qr-mini light" data-qr="48"></div></div><div class="dev-stand"></div></div>
+        <h3>Omni Register</h3><p>Two screens: yours runs the sale, theirs checks out fast, with RenPay QR built into the customer display.</p>
+        <div class="hw-price"><strong>$999</strong><span>or $84/mo over 12 months</span></div>
+        <button class="btn btn-dark" data-view-link="terminal">See it in action</button>
+      </article>
+      <article class="hw-card">
+        <div class="device dev-terminal"><div class="dev-screen sm"><span class="dev-total">$24.00</span><small>Tap to pay</small></div></div>
+        <h3>Omni Terminal</h3><p>The all-in-one terminal with receipt printing, for the counter or the table.</p>
+        <div class="hw-price"><strong>$399</strong><span>or $34/mo over 12 months</span></div>
+      </article>
+      <article class="hw-card">
+        <div class="device dev-stand"><div class="dev-screen sm"><svg class="omni-logo sm on-dark" viewBox="0 0 168 72" role="img" aria-label="OMNI"><path class="omni-chain" d="M48 40 A20 20 0 0 1 8 40 A20 20 0 0 1 48 40 L60 60 V20 L76 42 L92 20 V60 H104 V20 L132 60 V20 H148 V60"/><circle class="omni-dot" cx="148" cy="7" r="4.5"/></svg><small>Stand + tablet POS</small></div></div>
+        <h3>Omni Stand</h3><p>The swivelling stand that turns a tablet into a full point of sale.</p>
+        <div class="hw-price"><strong>$249</strong><span>or $21/mo over 12 months</span></div>
+      </article>
+      <article class="hw-card">
+        <div class="device dev-reader"><div class="reader-body"><span class="reader-ring"></span><small>TAP</small></div></div>
+        <h3>Omni Reader</h3><p>The pocket reader for every tap and insert, at markets, on site and on the go.</p>
+        <div class="hw-price"><strong>$69</strong><span>first reader free for new sellers</span></div>
+      </article>
+    </div>
+    <p class="fineprint">Plus Tap to Pay on phone at no hardware cost: turn a compatible phone into a terminal from the Omni app.</p>
+  </div>
+
+  <!-- ALFIE -->
+  <div class="section wrap" id="alfie">
+    <div class="alfie-panel">
+      <div class="alfie-copy">
+        <span class="eyebrow light"><span class="alfie-mark sm">✦</span> Alfie, inside Omni</span>
+        <h2>Square takes the payment.<br>Alfie does the finance.</h2>
+        <p>Every Omni payment is understood the moment it lands. Alfie matches it to an order, reserves the tax, updates your forecast and prepares the next move, then asks for one tap, not a weekend of bookkeeping.</p>
+        <ul class="alfie-list">
+          <li><strong>Reconciliation, done:</strong> sales, fees and payouts matched automatically</li>
+          <li><strong>Tax, set aside:</strong> HST / GST reserved in Sense Save as you sell</li>
+          <li><strong>Cash flow, seen early:</strong> shortfalls flagged days before they bite</li>
+          <li><strong>Actions, prepared:</strong> supplier payments and transfers drafted for approval</li>
+        </ul>
+      </div>
+      <div class="alfie-chat">
+        <div class="chat-head"><span class="alfie-mark">✦</span><div><strong>Alfie</strong><small>Watching today’s payments</small></div><span class="chat-live">Live</span></div>
+        <div class="chat-msg alfie"><p>Today is tracking 18% ahead of your usual Thursday. I have set aside <strong>$412.66</strong> in HST and matched all 96 payments.</p><time>Just now · working live</time></div>
+        <div class="chat-msg alfie"><p>Your bean supplier invoice ($1,240) is due tomorrow. Your payout covers it with $2,180 to spare. Want me to schedule it?</p>
+          <div class="chat-actions"><button class="chip-btn mint" data-alfie-approve>Schedule payment</button><button class="chip-btn ghost">Not now</button><span class="fc-done" hidden>Scheduled ✓</span></div></div>
+        <div class="chat-msg user"><p>What were my best hours this week?</p></div>
+        <div class="chat-msg alfie"><p>Weekday mornings, 8 to 10. RenPay QR payments made up 31% of those sales, your fastest checkout by far.</p></div>
+        <div class="chat-input"><span>Ask Alfie about your money…</span><span class="send-dot">↑</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEVELOPERS -->
+  <div class="section wrap" id="developers">
+    <div class="dev-split">
+      <div>
+        <span class="eyebrow dark">Developers</span>
+        <h2>Payments API, without the archaeology</h2>
+        <p class="sec-sub">One integration for online checkout, payment links, invoices and in-app payments. Test keys in minutes, idempotent by default, webhooks for everything.</p>
+        <ul class="check-list">
+          <li>Drop-in Omni Checkout, or fully custom with the Payments API</li>
+          <li>RenPay as a payment method with one extra line</li>
+          <li>Sandbox that mirrors production, including payouts to Renda</li>
+        </ul>
+        <div class="dev-ctas"><button class="btn btn-dark" data-view-link="checkout">See checkout</button><span class="mono-note">npm i @omni/payments</span></div>
+      </div>
+      <div class="code-card">
+        <div class="code-tabs"><button class="code-tab active" data-code="curl">cURL</button><button class="code-tab" data-code="js">JavaScript</button><button class="code-tab" data-code="renpay">Add RenPay</button><span class="code-dots"><i></i><i></i><i></i></span></div>
+        <pre class="code-body" id="code-curl"><code>curl https://api.omni.renda/v1/payments \
+  -u omni_test_••••••••: \
+  -d amount=4850 \
+  -d currency=cad \
+  -d source_id=card_••••4242 \
+  -d idempotency_key=order_1043</code></pre>
+        <pre class="code-body" id="code-js" hidden><code>import Omni from "@omni/payments";
+
+const omni = new Omni(process.env.OMNI_KEY);
+
+const payment = await omni.payments.create({
+  amount: 4850, currency: "cad",
+  orderId: "order_1043",
+  payout: "renda:smart-spend",
+});</code></pre>
+        <pre class="code-body" id="code-renpay" hidden><code>// Offer RenPay alongside cards
+checkout.paymentMethods([
+  "card", "apple_pay",
+  "renpay_qr",   // ← scan, confirm, paid
+]);</code></pre>
+        <div class="code-foot"><span>200 OK · payment.completed</span><span class="mono">payout → Renda in 1 day</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <div class="section wrap" id="pricing">
+    <div class="sec-head">
+      <span class="eyebrow dark">Pricing</span>
+      <h2>You only pay when you get paid</h2>
+      <p>No monthly processing fees, no setup costs, no hidden charges. Free point-of-sale software included.</p>
+    </div>
+    <div class="price-grid">
+      <article class="price-card"><h3>In person</h3><div class="price-num">2.4% <span>+ 15¢</span></div><p>Per tap, insert or swipe on any Omni device.</p><ul class="check-list"><li>Interac debit: 0.7% + 7¢</li><li>RenPay QR: 1.5%, no per-sale fee</li><li>Offline mode included</li></ul></article>
+      <article class="price-card featured"><span class="hw-tag">Most popular</span><h3>Online</h3><div class="price-num">2.7% <span>+ 30¢</span></div><p>Per online checkout, payment link or invoice payment.</p><ul class="check-list"><li>Omni Checkout included</li><li>Apple Pay and Google Pay</li><li>RenPay for returning customers</li></ul><button class="btn btn-mint" data-view-link="checkout">Try checkout</button></article>
+      <article class="price-card"><h3>Keyed in</h3><div class="price-num">3.2% <span>+ 15¢</span></div><p>Per manually entered card, for phone and remote orders.</p><ul class="check-list"><li>Virtual terminal included</li><li>Fraud screening by Alfie</li><li>Custom rates over $250k / year</li></ul></article>
+    </div>
+    <p class="fineprint">Concept pricing shown for this build. Final rates are confirmed at sign-up, in plain language, before you take your first payment.</p>
+  </div>
+
+  <!-- PHOTO BAND + CTA -->
+  <div class="section wrap">
+    <div class="photo-band">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80&auto=format&fit=crop" alt="A warm, busy restaurant interior">
+      <div class="photo-quote"><p>“Omni paid for itself the first weekend. Alfie doing the books is the part I did not know I needed.”</p><span>Sarah, Canal Market · Retail, Ottawa</span></div>
+    </div>
+    <div class="cta-card">
+      <h2>Start selling today.<br>Let Alfie handle tomorrow.</h2>
+      <p>Create an account in minutes, order a reader, and take your first payment, card or RenPay, the same day.</p>
+      <div class="hero-ctas center"><button class="btn btn-mint btn-lg" data-view-link="dashboard">Create your account</button><button class="btn btn-ghost-light btn-lg" data-view-link="terminal">Explore the terminal</button></div>
+    </div>
+  </div>
+
+  <footer class="mkt-footer wrap">
+    <div class="foot-brand"><svg class="omni-logo" viewBox="0 0 168 72" role="img" aria-label="OMNI"><path class="omni-chain" d="M48 40 A20 20 0 0 1 8 40 A20 20 0 0 1 48 40 L60 60 V20 L76 42 L92 20 V60 H104 V20 L132 60 V20 H148 V60"/><circle class="omni-dot" cx="148" cy="7" r="4.5"/></svg><span>Omni Financial Solutions · The payments side of Renda · Built by Renda Financial Technologies, Inc.</span></div>
+    <div class="foot-cols">
+      <div><h4>Products</h4><a href="#hardware">Hardware</a><a href="#products">Point of sale</a><button data-view-link="checkout">Online checkout</button><button data-view-link="terminal">Terminal</button></div>
+      <div><h4>Business types</h4><a href="#business-types">Food &amp; beverage</a><a href="#business-types">Retail</a><a href="#business-types">Beauty</a><a href="#business-types">Services</a></div>
+      <div><h4>Developers</h4><a href="#developers">API reference</a><a href="#developers">Sandbox</a><a href="#developers">Webhooks</a><a href="#developers">Status</a></div>
+      <div><h4>Company</h4><a href="#alfie">Alfie</a><a href="#pricing">Pricing</a><a href="https://renda-inc.github.io/Renda-GTM-Landing-Page---MUSE/" target="_blank" rel="noopener">Renda Banking</a><span>RenPay</span></div>
+    </div>
+    <p class="fineprint">Omni is a concept build. Payments are processed by licensed partners; deposits are held by Renda’s banking partner. Nothing on this page is a live offer.</p>
+  </footer>
+</section>
+
+<!-- ============================================================ -->
+<!-- ====================== DASHBOARD VIEW ====================== -->
+<!-- ============================================================ -->
+<section class="view" id="view-dashboard">
+  <div class="dash-shell">
+    <aside class="dash-side">
+      <div class="dash-brand"><svg class="omni-logo sm" viewBox="0 0 168 72" role="img" aria-label="OMNI"><path class="omni-chain" d="M48 40 A20 20 0 1 0 28 60 A20 20 0 1 0 48 40 L60 60 V20 L76 42 L92 20 V60 H104 V20 L132 60 V20 H148 V60"/><circle class="omni-dot" cx="148" cy="7" r="4.5"/></svg></div>
+      <div class="biz-switch"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=200&q=70&auto=format&fit=crop" alt=""><div><strong>Maple &amp; Main Café</strong><small>Toronto · Danforth</small></div><span>⌄</span></div>
+      <nav class="dash-nav">
+        <a class="active" href="#">Overview</a><a href="#">Payments</a><a href="#">Orders</a><a href="#">Items &amp; inventory</a><a href="#">Customers</a><a href="#">Invoices</a><a href="#">Payouts <span class="nav-badge">1</span></a><a href="#">Team</a><a href="#">Devices</a><a href="#">Settings</a>
+      </nav>
+      <div class="side-alfie"><span class="alfie-mark">✦</span><div><strong>Alfie is on</strong><small>Reconciling, reserving tax and preparing payouts as you sell.</small></div></div>
+      <div class="side-user"><span class="avatar">JK</span><div><strong>Jordan Kim</strong><small>Owner</small></div></div>
+    </aside>
+
+    <div class="dash-main">
+      <div class="dash-head">
+        <div><span class="eyebrow dark">Thursday, Nov 26</span><h2>Good evening, Jordan</h2></div>
+        <div class="dash-head-actions"><button class="btn btn-ghost-dark btn-sm" data-view-link="checkout">Payment link</button><button class="btn btn-dark btn-sm" data-view-link="terminal">Take a payment</button></div>
+      </div>
+
+      <div class="kpi-row">
+        <article class="kpi-card"><span>Today’s sales</span><strong>$3,842.16</strong><small class="up">↑ 18% vs last Thursday · 96 payments</small></article>
+        <article class="kpi-card"><span>Next payout</span><strong>$3,611.58</strong><small>To Renda Smart Spend · Tomorrow</small></article>
+        <article class="kpi-card"><span>HST set aside by Alfie</span><strong>$412.66</strong><small>Reserved in Sense Save · On track</small></article>
+        <article class="kpi-card renpay"><span>Paid with RenPay</span><strong>31%</strong><small>30 sales · No card fees on these</small></article>
+      </div>
+
+      <div class="dash-grid">
+        <article class="panel chart-panel">
+          <div class="panel-head"><div><h3>Sales</h3><small id="chart-caption">Today by hour · Peak 8 to 10 am</small></div>
+            <div class="seg"><button class="seg-btn active" data-chart="today">Today</button><button class="seg-btn" data-chart="week">Week</button><button class="seg-btn" data-chart="month">Month</button></div></div>
+          <div class="bars" id="chart-bars"></div>
+          <div class="chart-axis"><span>7a</span><span>9a</span><span>11a</span><span>1p</span><span>3p</span><span>5p</span><span>7p</span></div>
+        </article>
+
+        <article class="panel alfie-panel-dash">
+          <div class="panel-head"><div class="alfie-title"><span class="alfie-mark">✦</span><h3>Alfie, for you</h3></div><span class="chat-live">Live</span></div>
+          <div class="insight"><p><strong>Supplier invoice due tomorrow.</strong> Northwind Roasters, $1,240. Tomorrow’s payout covers it with $2,180 to spare.</p><div class="fc-actions"><button class="chip-btn mint" data-alfie-approve>Schedule payment</button><span class="fc-done" hidden>Scheduled for tomorrow ✓</span></div></div>
+          <div class="insight"><p><strong>RenPay is your fastest checkout.</strong> 31% of sales today, average 6 seconds at the counter. Keep the QR sign out.</p></div>
+          <div class="insight"><p><strong>One refund needs a look.</strong> $18.50 at 2:14 pm, marked as a duplicate charge by the customer.</p><div class="fc-actions"><button class="chip-btn" data-alfie-approve>Approve refund</button><span class="fc-done" hidden>Refund approved ✓</span></div></div>
+          <div class="alfie-feed">
+            <div class="feed-line"><span class="feed-dot"></span><p>Alfie reconciled payment <span class="mono">#9841</span> · RenPay QR, $48.50</p><time>2 min ago</time></div>
+            <div class="feed-line"><span class="feed-dot"></span><p>Alfie set aside $5.58 HST from the last card sale</p><time>9 min ago</time></div>
+            <div class="feed-line"><span class="feed-dot"></span><p>Alfie matched 96 payments to today’s orders, no gaps</p><time>24 min ago</time></div>
+          </div>
+        </article>
+
+        <article class="panel tx-panel">
+          <div class="panel-head"><h3>Latest payments</h3><span class="mono-note">All channels, one list</span></div>
+          <table class="tx-table"><thead><tr><th>Time</th><th>Customer</th><th>Method</th><th>Status</th><th class="r">Amount</th></tr></thead>
+          <tbody>
+            <tr><td>6:42 pm</td><td>Walk-in · Register 1</td><td><span class="pay-tag renpay">RenPay QR</span></td><td><span class="status ok">Paid</span></td><td class="r">$48.50</td></tr>
+            <tr><td>6:31 pm</td><td>Online order #1043</td><td><span class="pay-tag">Visa •• 4242</span></td><td><span class="status ok">Paid</span></td><td class="r">$86.20</td></tr>
+            <tr><td>6:18 pm</td><td>Amara O.</td><td><span class="pay-tag">Tap · Apple Pay</span></td><td><span class="status ok">Paid</span></td><td class="r">$12.75</td></tr>
+            <tr><td>5:57 pm</td><td>Invoice #221</td><td><span class="pay-tag">Interac</span></td><td><span class="status ok">Paid</span></td><td class="r">$340.00</td></tr>
+            <tr><td>5:41 pm</td><td>Walk-in · Reader</td><td><span class="pay-tag renpay">RenPay QR</span></td><td><span class="status ok">Paid</span></td><td class="r">$9.50</td></tr>
+            <tr><td>2:14 pm</td><td>Devon P.</td><td><span class="pay-tag">Mastercard •• 8810</span></td><td><span class="status warn">Refund review</span></td><td class="r">$18.50</td></tr>
+          </tbody></table>
+        </article>
+
+        <article class="panel payout-panel">
+          <div class="panel-head"><h3>Payouts to Renda</h3><small>Automatic, next day</small></div>
+          <div class="payout-row"><div><strong>$3,611.58</strong><small>Tomorrow · Sales of Nov 26</small></div><span class="status pend">Scheduled</span></div>
+          <div class="payout-row"><div><strong>$3,204.91</strong><small>Today · Sales of Nov 25</small></div><span class="status ok">In Smart Spend</span></div>
+          <div class="payout-row"><div><strong>$2,977.40</strong><small>Nov 25 · Sales of Nov 24</small></div><span class="status ok">In Smart Spend</span></div>
+          <p class="panel-note">Alfie splits every payout as it lands: HST to Sense Save, supplier reserve, the rest stays in Smart Spend.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ======================= TERMINAL VIEW ====================== -->
+<!-- ============================================================ -->
+<section class="view" id="view-terminal">
+  <div class="wrap term-wrap">
+    <div class="sec-head left">
+      <span class="eyebrow dark">Omni Register · Maple &amp; Main Café</span>
+      <h2>The terminal, live</h2>
+      <p>Tap items to build a sale on the left. On the right is exactly what your customer sees: card, tap, or RenPay QR with no card at all. Try paying both ways.</p>
+    </div>
+    <div class="term-grid">
+      <!-- Staff side -->
+      <div class="pos-card">
+        <div class="pos-head"><strong>New sale</strong><span class="mono-note">Register 1 · Jordan</span></div>
+        <div class="pos-items" id="pos-items"></div>
+        <div class="pos-cart">
+          <div id="cart-lines"><p class="cart-empty">Tap an item to start a sale.</p></div>
+          <div class="cart-totals">
+            <div><span>Subtotal</span><strong id="ct-sub">$0.00</strong></div>
+            <div><span>HST (13%)</span><strong id="ct-tax">$0.00</strong></div>
+            <div class="grand"><span>Total</span><strong id="ct-total">$0.00</strong></div>
+          </div>
+          <button class="btn btn-ghost-dark" id="cart-clear">Clear sale</button>
+        </div>
+      </div>
+
+      <!-- Customer side -->
+      <div class="cust-device">
+        <div class="cust-screen">
+          <div class="cust-brand"><svg class="omni-logo sm on-dark" viewBox="0 0 168 72" role="img" aria-label="OMNI"><path class="omni-chain" d="M48 40 A20 20 0 1 0 28 60 A20 20 0 1 0 48 40 L60 60 V20 L76 42 L92 20 V60 H104 V20 L132 60 V20 H148 V60"/><circle class="omni-dot" cx="148" cy="7" r="4.5"/></svg><span>Maple &amp; Main Café</span></div>
+
+          <div id="pay-state-idle">
+            <span class="cust-amount" id="cust-amount">$0.00</span>
+            <p class="cust-sub">How would you like to pay?</p>
+            <button class="pay-option renpay-opt" id="btn-renpay">
+              <span class="qr-box" data-qr="120"></span>
+              <span class="pay-opt-copy"><strong>Pay with RenPay</strong><small>Scan with the RenPay app. No card needed, paid from your Renda balance in seconds.</small><span class="renpay-user">@mapleandmain · Omni</span></span>
+            </button>
+            <button class="pay-option" id="btn-card"><span class="pay-ico">▭</span><span class="pay-opt-copy"><strong>Card or tap</strong><small>Chip, tap, Apple Pay, Google Pay, Interac</small></span></button>
+            <p class="cust-note">RenPay payments skip card fees and settle instantly inside Renda.</p>
+          </div>
+
+          <div id="pay-state-processing" hidden>
+            <div class="spinner"></div>
+            <strong id="processing-title">Waiting for RenPay…</strong>
+            <p class="cust-sub" id="processing-sub">Confirm the payment in your RenPay app.</p>
+          </div>
+
+          <div id="pay-state-done" hidden>
+            <span class="done-ring">✓</span>
+            <strong>Payment approved</strong>
+            <p class="cust-sub" id="done-sub">RenPay · Paid in full</p>
+            <div class="receipt" id="receipt-lines"></div>
+            <div class="alfie-receipt"><span class="alfie-mark sm">✦</span><small>Alfie reconciled this sale and set the HST aside.</small></div>
+            <button class="btn btn-mint" id="btn-new-sale">New sale</button>
+          </div>
+        </div>
+        <div class="cust-base"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ======================= CHECKOUT VIEW ====================== -->
+<!-- ============================================================ -->
+<section class="view" id="view-checkout">
+  <div class="wrap co-wrap">
+    <div class="sec-head left">
+      <span class="eyebrow dark">Omni Checkout</span>
+      <h2>What your customer sees before they pay</h2>
+      <p>The same checkout your online store, payment links and invoices all use. Clean, fast, and RenPay sits beside the card, not buried under it.</p>
+    </div>
+
+    <div class="co-grid" id="co-main">
+      <article class="co-card order-card">
+        <div class="co-merchant"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=200&q=70&auto=format&fit=crop" alt=""><div><strong>Maple &amp; Main Café</strong><small>Order #1043 · Pickup today</small></div></div>
+        <div class="order-lines">
+          <div><span>House beans, 1 kg × 2</span><strong>$64.00</strong></div>
+          <div><span>Stoneware mug set</span><strong>$38.00</strong></div>
+          <div><span>Gift card</span><strong>$25.00</strong></div>
+          <div class="muted"><span>Shipping</span><strong>Free pickup</strong></div>
+          <div class="muted"><span>HST (13%)</span><strong>$16.51</strong></div>
+          <div class="grand"><span>Total (CAD)</span><strong>$143.51</strong></div>
+        </div>
+        <div class="co-secure"><span class="alfie-mark sm">✦</span><p><strong>Protected by Alfie.</strong> This payment is screened for fraud in real time, and your card details go to our licensed processor, never to the store.</p></div>
+      </article>
+
+      <article class="co-card pay-card">
+        <h3>Pay $143.51</h3>
+        <button class="wallet-btn" data-pay-sim="Apple Pay"> Pay with Apple Pay</button>
+        <button class="renpay-banner" data-pay-sim="RenPay">
+          <span class="qr-box sm" data-qr="64"></span>
+          <span><strong>Pay with RenPay</strong><small>Scan, or continue as @you in the RenPay app. No card, no typing.</small></span>
+          <span class="rb-arrow">→</span>
+        </button>
+        <div class="or-row"><span></span>or pay with card<span></span></div>
+        <form id="co-form" novalidate>
+          <label>Email<input type="email" value="amara@example.com" autocomplete="email"></label>
+          <label>Card number<input type="text" id="cc-num" inputmode="numeric" value="4242 4242 4242 4242" autocomplete="cc-number"></label>
+          <div class="field-row">
+            <label>Expiry<input type="text" id="cc-exp" value="12 / 28" autocomplete="cc-exp"></label>
+            <label>CVC<input type="text" id="cc-cvc" value="123" autocomplete="cc-csc"></label>
+          </div>
+          <label>Name on card<input type="text" value="Amara Okafor" autocomplete="cc-name"></label>
+          <button type="submit" class="btn btn-mint btn-lg full">Pay $143.51</button>
+          <p class="co-terms">By paying you agree to Maple &amp; Main’s terms. Omni processes this payment for the merchant; payouts are made to their Renda account.</p>
+        </form>
+      </article>
+    </div>
+
+    <div class="co-success" id="co-success" hidden>
+      <span class="done-ring">✓</span>
+      <h3>Payment complete</h3>
+      <p id="co-success-sub">Paid with card · $143.51 to Maple &amp; Main Café</p>
+      <div class="receipt narrow"><div><span>Order</span><strong>#1043</strong></div><div><span>Receipt</span><strong>Sent to amara@example.com</strong></div><div><span>Payout</span><strong>Tomorrow, to Renda Smart Spend</strong></div></div>
+      <div class="alfie-receipt center"><span class="alfie-mark sm">✦</span><small>Alfie screened this payment, matched it to order #1043 and will set the HST aside when the payout lands.</small></div>
+      <button class="btn btn-dark" id="co-again">Back to checkout</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="global-foot">
+  <span>Omni Financial Solutions · Built by Renda Financial Technologies, Inc. · <a href="https://renda-inc.github.io/Renda-GTM-Landing-Page---MUSE/" target="_blank" rel="noopener">Renda Banking</a></span>
+  <span>Concept build, all frontend. Payments and PCI are handled by licensed partners in production.</span>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 72" role="img" aria-label="OMNI">
+  <title>OMNI</title>
+  <!-- One continuous joined chain: O joins M, M joins N, N joins I.
+       A single stroke path, drawn in order, with rounded caps and joins.
+       The O is closed with two arcs, then the same stroke exits the O
+       into the M, runs along the baseline into the N, and along the
+       top into the final I. Letters are never separate. -->
+  <path d="M48 40 A20 20 0 0 1 8 40 A20 20 0 0 1 48 40 L60 60 V20 L76 42 L92 20 V60 H104 V20 L132 60 V20 H148 V60"
+        fill="none" stroke="#0B0E11" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Mint accent, used sparingly: the dot over the final I -->
+  <circle cx="148" cy="7" r="4.5" fill="#00D084"/>
+</svg>
