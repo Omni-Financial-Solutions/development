@@ -13,7 +13,7 @@
 <style id="omni-logo-styles">
   /* OMNI logo: the word OMNI in a regular rounded font (Baloo 2), straight baseline,
      letters set tight so they touch and flow into each other, in the brand gradient. */
-  .omni-wordmark{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:31px;line-height:1;letter-spacing:-.055em;background:linear-gradient(92deg,#4F46E5,#9333EA 52%,#D946EF);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+  .omni-wordmark{position:relative;padding-bottom:.16em;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:31px;line-height:1;letter-spacing:-.055em;background:linear-gradient(92deg,#767E88,#C6CCD3 30%,#5F6771 55%,#B7BFC8 78%,#4E565F);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
   .omni-wordmark.sm{font-size:23px}
   .omni-wordmark.lg{font-size:40px}
   .brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none}
@@ -26,7 +26,7 @@
 <!-- ===== GLOBAL VIEW TOGGLE ===== -->
 <header class="topbar">
   <a class="brand" href="#marketing" data-view-link="marketing" aria-label="OMNI home">
-    <span class="omni-wordmark" role="img" aria-label="OMNI">OMNI</span>
+    <span class="omni-wordmark" role="img" aria-label="OMNI">OMNI<svg class="root-flow" viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden="true"><path d="M3 7 C35 3 55 11 82 7 C110 3 128 11 155 7 C172 4 186 8 197 6 M52 8 q4 6 -1 8 M101 7 q5 6 1 9 M149 8 q4 5 -1 8"/></svg></span>
     <span class="brand-name">OMNI</span>
     <span class="brand-sub">by Renda</span>
   </a>
@@ -46,7 +46,7 @@
 <!-- OMNI LOGO: the word OMNI in the rounded Baloo 2 font, tight letters that flow
      into each other, brand gradient. Reuse .omni-wordmark everywhere. -->
 <template id="omni-logo-template">
-  <span class="omni-wordmark" role="img" aria-label="OMNI">OMNI</span>
+  <span class="omni-wordmark" role="img" aria-label="OMNI">OMNI<svg class="root-flow" viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden="true"><path d="M3 7 C35 3 55 11 82 7 C110 3 128 11 155 7 C172 4 186 8 197 6 M52 8 q4 6 -1 8 M101 7 q5 6 1 9 M149 8 q4 5 -1 8"/></svg></span>
 </template>
 
 <main>
@@ -183,7 +183,7 @@
         <span class="hw-more">See details →</span><div class="hw-price"><strong>$399</strong><span>or $34/mo over 12 months</span></div>
       </article>
       <article class="hw-card clickable" data-device="stand" tabindex="0" role="button" aria-label="See Omni stand details">
-        <div class="device dev-stand"><div class="dev-screen sm"><span class="omni-wordmark sm on-dark" role="img" aria-label="OMNI">OMNI</span><small>Stand + tablet POS</small></div></div>
+        <div class="device dev-stand"><div class="dev-screen sm"><span class="omni-wordmark sm on-dark" role="img" aria-label="OMNI">OMNI<svg class="root-flow" viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden="true"><path d="M3 7 C35 3 55 11 82 7 C110 3 128 11 155 7 C172 4 186 8 197 6 M52 8 q4 6 -1 8 M101 7 q5 6 1 9 M149 8 q4 5 -1 8"/></svg></span><small>Stand + tablet POS</small></div></div>
         <h3>Omni Stand</h3><p>The swivelling stand that turns a tablet into a full point of sale.</p>
         <span class="hw-more">See details →</span><div class="hw-price"><strong>$249</strong><span>or $21/mo over 12 months</span></div>
       </article>
@@ -375,7 +375,7 @@ checkout.paymentMethods([
   </div>
 
   <footer class="mkt-footer wrap">
-    <div class="foot-brand"><span class="omni-wordmark" role="img" aria-label="OMNI">OMNI</span><span>Omni Financial Solutions · The payments side of Renda · Built by Renda Financial Technologies, Inc.</span></div>
+    <div class="foot-brand"><span class="omni-wordmark" role="img" aria-label="OMNI">OMNI<svg class="root-flow" viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden="true"><path d="M3 7 C35 3 55 11 82 7 C110 3 128 11 155 7 C172 4 186 8 197 6 M52 8 q4 6 -1 8 M101 7 q5 6 1 9 M149 8 q4 5 -1 8"/></svg></span><span>Omni Financial Solutions · The payments side of Renda · Built by Renda Financial Technologies, Inc.</span></div>
     <div class="foot-cols">
       <div><h4>Products</h4><a href="#hardware">Hardware</a><a href="#products">Point of sale</a><button data-view-link="checkout">Online checkout</button><button data-view-link="terminal">Terminal</button></div>
       <div><h4>Business types</h4><a href="#business-types">Food &amp; beverage</a><a href="#business-types">Retail</a><a href="#business-types">Beauty</a><a href="#business-types">Services</a></div>
@@ -392,7 +392,7 @@ checkout.paymentMethods([
 <section class="view" id="view-dashboard">
   <div class="dash-shell">
     <aside class="dash-side">
-      <div class="dash-brand"><span class="omni-wordmark sm" role="img" aria-label="OMNI">OMNI</span></div>
+      <div class="dash-brand"><span class="omni-wordmark sm" role="img" aria-label="OMNI">OMNI<svg class="root-flow" viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden="true"><path d="M3 7 C35 3 55 11 82 7 C110 3 128 11 155 7 C172 4 186 8 197 6 M52 8 q4 6 -1 8 M101 7 q5 6 1 9 M149 8 q4 5 -1 8"/></svg></span></div>
       <div class="biz-switch"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=200&q=70&auto=format&fit=crop" alt=""><div><strong>Maple &amp; Main Café</strong><small>Toronto · Danforth</small></div><span>⌄</span></div>
       <nav class="dash-nav">
         <span class="nav-group">Sell</span>
@@ -555,7 +555,7 @@ checkout.paymentMethods([
       <!-- Customer side -->
       <div class="cust-device">
         <div class="cust-screen">
-          <div class="cust-brand"><span class="omni-wordmark sm on-dark" role="img" aria-label="OMNI">OMNI</span><span>Maple &amp; Main Café</span></div>
+          <div class="cust-brand"><span class="omni-wordmark sm on-dark" role="img" aria-label="OMNI">OMNI<svg class="root-flow" viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden="true"><path d="M3 7 C35 3 55 11 82 7 C110 3 128 11 155 7 C172 4 186 8 197 6 M52 8 q4 6 -1 8 M101 7 q5 6 1 9 M149 8 q4 5 -1 8"/></svg></span><span>Maple &amp; Main Café</span></div>
 
           <div id="pay-state-idle">
             <span class="cust-amount" id="cust-amount">$0.00</span>
