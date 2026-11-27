@@ -57,7 +57,7 @@ function qrPattern(seedStr){
   };
   for(let y=0;y<N;y++) for(let x=0;x<N;x++) grid[y][x] = rand() > 0.52 ? 1 : 0;
   finder(0,0); finder(N-7,0); finder(0,N-7);
-  /* clear centre for the mint dot */
+  /* clear centre for the gradient dot */
   for(let y=9;y<12;y++) for(let x=9;x<12;x++) grid[y][x] = 0;
   return grid;
 }
@@ -154,12 +154,12 @@ const ITEMS = [
   { id:"espresso",  name:"Espresso",        price:3.75,  tile:"ES", color:"#FDEBD3" },
   { id:"latte",     name:"Café latte",      price:5.50,  tile:"CL", color:"#F1EAFB" },
   { id:"capp",      name:"Cappuccino",      price:5.25,  tile:"CA", color:"#E0EDFB" },
-  { id:"beans",     name:"House beans 1 kg",price:32.00, tile:"HB", color:"#DFF7F5" },
+  { id:"beans",     name:"House beans 1 kg",price:32.00, tile:"HB", color:"#EDE9FE" },
   { id:"mug",       name:"Stoneware mug",   price:19.00, tile:"SM", color:"#FDEBD3" },
   { id:"croissant", name:"Croissant",       price:4.25,  tile:"CR", color:"#F1EAFB" },
   { id:"sandwich",  name:"Turkey sandwich", price:12.75, tile:"TS", color:"#E0EDFB" },
-  { id:"tea",       name:"Herbal tea",      price:4.00,  tile:"HT", color:"#DFF7F5" },
-  { id:"giftcard",  name:"Gift card $25",   price:25.00, tile:"GC", color:"#E2F8EE" },
+  { id:"tea",       name:"Herbal tea",      price:4.00,  tile:"HT", color:"#EDE9FE" },
+  { id:"giftcard",  name:"Gift card $25",   price:25.00, tile:"GC", color:"#FAE8FF" },
 ];
 const cart = new Map(); /* id -> qty */
 const posItems = $("#pos-items");
@@ -264,3 +264,92 @@ $("#co-again").addEventListener("click", () => {
   $("#co-success").hidden = true;
   $("#co-main").hidden = false;
 });
+
+/* ---------- (i) FAQ accordion ---------- */
+$$(".faq-q").forEach(q => q.addEventListener("click", () => {
+  const item = q.closest(".faq-item"), a = item.querySelector(".faq-a");
+  const open = item.classList.toggle("open");
+  q.setAttribute("aria-expanded", open);
+  if(a) a.hidden = !open;
+}));
+
+/* ---------- (j) Devices: modal + see more ---------- */
+const DEVICES = {
+  register:{ name:"Omni Register", price:"$999", monthly:"or $84/mo over 12 months", best:"Best for counters",
+    desc:"Two screens: yours runs the sale, theirs checks out fast, with RenPay QR built into the customer display. The full counter setup for cafés, restaurants and busy retail.",
+    img:"https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1000&q=80&auto=format&fit=crop",
+    specs:["Dual screens: 15.6in staff, 10.1in customer","Wi-Fi, Ethernet and 4G backup","Payments: tap, chip, swipe, wallets, Interac, RenPay QR","Built-in receipt printer and cash drawer port","All-day counter power, no battery swaps"],
+    box:"Register, customer display, power supply, starter receipt roll, quick-start guide." },
+  terminal:{ name:"Omni Terminal", price:"$399", monthly:"or $34/mo over 12 months", best:"Best for tableside",
+    desc:"The all-in-one terminal with receipt printing, for the counter or the table. Take the payment where the customer is, then settle up without going back to the till.",
+    img:"https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=1000&q=80&auto=format&fit=crop",
+    specs:["5.5in touchscreen with PIN on glass","Wi-Fi and 4G, works anywhere in the building","Payments: tap, chip, wallets, Interac, RenPay QR","Built-in receipt printer","Battery: a full shift, about 12 hours"],
+    box:"Terminal, charging dock, starter receipt rolls, quick-start guide." },
+  stand:{ name:"Omni Stand", price:"$249", monthly:"or $21/mo over 12 months", best:"Best for tablet POS",
+    desc:"The swivelling stand that turns a tablet into a full point of sale. Spin it to the customer for tips, signatures and RenPay QR confirmation.",
+    img:"https://images.unsplash.com/photo-1556742111-541e53eabd98?w=1000&q=80&auto=format&fit=crop",
+    specs:["Fits most 10 to 13in tablets","Swivels 180 degrees for customer checkout","Payments via paired Omni Reader or Tap on Phone","RenPay QR shown on the tablet display","Countertop or wall mount options"],
+    box:"Stand, tablet mount kit, cable set, quick-start guide. Tablet and reader sold separately." },
+  reader:{ name:"Omni Reader", price:"$69", monthly:"first reader free for new sellers", best:"Best on the go",
+    desc:"The pocket reader for every tap and insert, at markets, on site and on the go. Pairs with the Omni app on your phone in seconds.",
+    img:"https://images.unsplash.com/photo-1556741533-6e6a62bd8b49?w=1000&q=80&auto=format&fit=crop",
+    specs:["Pocket size, 90 grams","Bluetooth pairing with the Omni app","Payments: tap, chip, wallets, Interac","RenPay QR shown in the app at checkout","Battery: about a week of market days"],
+    box:"Reader, USB-C charging cable, lanyard, quick-start guide." },
+  handheld:{ name:"Omni Handheld", price:"$329", monthly:"or $28/mo over 12 months", best:"Part of the full lineup",
+    desc:"A lighter terminal your team carries all shift, with ordering built in. Orders fire straight to the kitchen or prep queue while the payment happens at the table.",
+    img:"https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000&q=80&auto=format&fit=crop",
+    specs:["5in touchscreen, one-hand friendly","Wi-Fi and 4G","Payments: tap, chip, wallets, Interac, RenPay QR","Ordering and bill splitting built in","Battery: about 10 hours"],
+    box:"Handheld, charging cable, wrist strap, quick-start guide." },
+  kiosk:{ name:"Omni Kiosk", price:"$1,299", monthly:"or $108/mo over 12 months", best:"Part of the full lineup",
+    desc:"Self-serve ordering and payment for busy counters and quick-service lines. Customers order, pay by card or RenPay, and your team focuses on making, not taking, orders.",
+    img:"https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1000&q=80&auto=format&fit=crop",
+    specs:["21.5in customer touchscreen","Countertop, wall or floor stand mounting","Payments: tap, chip, wallets, Interac, RenPay QR","Built-in receipt printer","Menu and ordering software included"],
+    box:"Kiosk display, stand of your choice, printer, power kit, setup guide." },
+  tapphone:{ name:"Omni Tap on Phone", price:"$0", monthly:"included with every account", best:"Part of the full lineup",
+    desc:"No hardware at all. Your phone becomes the terminal: accept taps on the phone itself, and show a RenPay QR for card-free payment. Perfect for markets, trades and pop-ups.",
+    img:"https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1000&q=80&auto=format&fit=crop",
+    specs:["Works on recent iPhone and Android phones","Payments: tap on phone, wallets, RenPay QR","No reader, no rental, no shipping wait","Same dashboard, payouts and Alfie features","Unlimited devices on one account"],
+    box:"Nothing to unbox. Download the Omni app and sign in." },
+};
+const modal = $("#device-modal");
+function openDevice(key){
+  const d = DEVICES[key]; if(!d || !modal) return;
+  $("#dm-name").textContent = d.name;
+  $("#dm-price").textContent = d.price;
+  $("#dm-monthly").textContent = d.monthly;
+  $("#dm-best").textContent = d.best;
+  $("#dm-desc").textContent = d.desc;
+  const img = $("#dm-img"); img.src = d.img; img.alt = d.name;
+  $("#dm-specs").innerHTML = d.specs.map(s => `<li>${s}</li>`).join("");
+  $("#dm-box").textContent = d.box;
+  modal.hidden = false;
+}
+function closeDevice(){ if(modal) modal.hidden = true; }
+$$(".hw-card.clickable").forEach(card => {
+  card.addEventListener("click", e => { if(e.target.closest("button, a")) return; openDevice(card.dataset.device); });
+  card.addEventListener("keydown", e => { if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openDevice(card.dataset.device); } });
+});
+const dmClose = $("#dm-close"); if(dmClose) dmClose.addEventListener("click", closeDevice);
+if(modal) modal.addEventListener("click", e => { if(e.target === modal) closeDevice(); });
+const dmCta = $("#dm-cta"); if(dmCta) dmCta.addEventListener("click", closeDevice);
+const seeMore = $("#hw-see-more");
+if(seeMore) seeMore.addEventListener("click", () => {
+  const extra = $("#hw-extra"); const show = extra.hidden;
+  extra.hidden = !show;
+  seeMore.textContent = show ? "Show fewer devices" : "See more devices";
+  seeMore.setAttribute("aria-expanded", show);
+});
+
+/* ---------- (k) Dashboard: orders advance + inventory dismiss ---------- */
+const ORDER_FLOW = ["New","Preparing","Ready","Completed"];
+$$("[data-order-next]").forEach(btn => btn.addEventListener("click", () => {
+  const i = ORDER_FLOW.indexOf(btn.textContent.trim());
+  const next = ORDER_FLOW[Math.min(i + 1, ORDER_FLOW.length - 1)];
+  btn.textContent = next;
+  btn.classList.toggle("mid", next === "Preparing");
+  btn.classList.toggle("done", next === "Ready" || next === "Completed");
+  if(next === "Completed") btn.disabled = true;
+}));
+$$("[data-dismiss]").forEach(btn => btn.addEventListener("click", () => {
+  const row = btn.closest(".stock-row"); if(row) row.hidden = true;
+}));
