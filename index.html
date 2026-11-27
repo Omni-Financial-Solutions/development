@@ -7,30 +7,26 @@
 <meta name="description" content="Omni is the payments side of Renda: smart terminals, online checkout and APIs, with Alfie running your financial operations alongside every payment.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Baloo+2:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 <link rel="icon" href="assets/omni-mark.svg" type="image/svg+xml">
 <style id="omni-logo-styles">
-  /* OMNI logo: one continuous joined chain of rounded letters, O to M to N to I.
-     Never render OMNI as separate spaced letters or as a lone circle icon. */
-  .omni-logo{display:block;width:auto;height:34px;flex:none}
-  .omni-logo .omni-chain{fill:none;stroke:url(#omni-grad);stroke-width:12;stroke-linecap:round;stroke-linejoin:round}
-  .omni-logo.on-dark .omni-chain{stroke:url(#omni-grad)}
-  .omni-logo.sm{height:24px}
-  .omni-logo.lg{height:44px}
+  /* OMNI logo: the word OMNI in a regular rounded font (Baloo 2), straight baseline,
+     letters set tight so they touch and flow into each other, in the brand gradient. */
+  .omni-wordmark{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:31px;line-height:1;letter-spacing:-.055em;background:linear-gradient(92deg,#4F46E5,#9333EA 52%,#D946EF);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+  .omni-wordmark.sm{font-size:23px}
+  .omni-wordmark.lg{font-size:40px}
   .brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none}
   .brand .brand-name{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-  .foot-brand .omni-logo{height:38px}
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="omni-grad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4F46E5"/><stop offset=".52" stop-color="#9333EA"/><stop offset="1" stop-color="#D946EF"/></linearGradient></defs></svg>
 
 
 <!-- ===== GLOBAL VIEW TOGGLE ===== -->
 <header class="topbar">
   <a class="brand" href="#marketing" data-view-link="marketing" aria-label="OMNI home">
-    <svg class="omni-logo" viewBox="0 0 184 72" role="img" aria-label="OMNI"><path class="omni-chain" d="M46 36 A18 18 0 1 1 28 18 A18 18 0 1 1 46 36 C52 40 56 46 58 54 L58 28 C58 18 68 16 74 24 L82 36 C86 42 90 42 94 36 L102 24 C108 16 114 18 114 28 L114 54 C114 60 120 60 122 54 L124 28 C125 18 134 16 141 23 L154 40 C160 48 164 44 164 34 L164 22 C164 15 173 15 173 24 L173 54"/></svg>
+    <span class="omni-wordmark" role="img" aria-label="OMNI">OMNI</span>
     <span class="brand-name">OMNI</span>
     <span class="brand-sub">by Renda</span>
   </a>
@@ -47,12 +43,10 @@
   </div>
 </header>
 
-<!-- OMNI LOGO, reusable for Dashboard sidebar, Terminal and Checkout brand spots:
-     clone #omni-logo-template (or copy the inline SVG used in the header/footer).
-     Do not substitute spaced text letters or the old circle-only mark.
-     On dark surfaces add class "on-dark" to the svg. -->
+<!-- OMNI LOGO: the word OMNI in the rounded Baloo 2 font, tight letters that flow
+     into each other, brand gradient. Reuse .omni-wordmark everywhere. -->
 <template id="omni-logo-template">
-  <svg class="omni-logo" viewBox="0 0 184 72" role="img" aria-label="OMNI"><path class="omni-chain" d="M46 36 A18 18 0 1 1 28 18 A18 18 0 1 1 46 36 C52 40 56 46 58 54 L58 28 C58 18 68 16 74 24 L82 36 C86 42 90 42 94 36 L102 24 C108 16 114 18 114 28 L114 54 C114 60 120 60 122 54 L124 28 C125 18 134 16 141 23 L154 40 C160 48 164 44 164 34 L164 22 C164 15 173 15 173 24 L173 54"/></svg>
+  <span class="omni-wordmark" role="img" aria-label="OMNI">OMNI</span>
 </template>
 
 <main>
@@ -189,7 +183,7 @@
         <span class="hw-more">See details →</span><div class="hw-price"><strong>$399</strong><span>or $34/mo over 12 months</span></div>
       </article>
       <article class="hw-card clickable" data-device="stand" tabindex="0" role="button" aria-label="See Omni stand details">
-        <div class="device dev-stand"><div class="dev-screen sm"><svg class="omni-logo sm on-dark" viewBox="0 0 184 72" role="img" aria-label="OMNI"><path class="omni-chain" d="M46 36 A18 18 0 1 1 28 18 A18 18 0 1 1 46 36 C52 40 56 46 58 54 L58 28 C58 18 68 16 74 24 L82 36 C86 42 90 42 94 36 L102 24 C108 16 114 18 114 28 L114 54 C114 60 120 60 122 54 L124 28 C125 18 134 16 141 23 L154 40 C160 48 164 44 164 34 L164 22 C164 15 173 15 173 24 L173 54"/></svg><small>Stand + tablet POS</small></div></div>
+        <div class="device dev-stand"><div class="dev-screen sm"><span class="omni-wordmark sm on-dark" role="img" aria-label="OMNI">OMNI</span><small>Stand + tablet POS</small></div></div>
         <h3>Omni Stand</h3><p>The swivelling stand that turns a tablet into a full point of sale.</p>
         <span class="hw-more">See details →</span><div class="hw-price"><strong>$249</strong><span>or $21/mo over 12 months</span></div>
       </article>
@@ -260,7 +254,7 @@
     <div class="alfie-panel">
       <div class="alfie-copy">
         <span class="eyebrow light"> Alfie, inside Omni</span>
-        <h2>Square takes the payment.<br>Alfie does the finance.</h2>
+        <h2>Omni takes the payment.<br>Alfie does the finance.</h2>
         <p>Every Omni payment is understood the moment it lands. Alfie matches it to an order, reserves the tax, updates your forecast and prepares the next move, then asks for one tap, not a weekend of bookkeeping.</p>
         <ul class="alfie-list">
           <li><strong>Reconciliation, done:</strong> sales, fees and payouts matched automatically</li>
@@ -381,7 +375,7 @@ checkout.paymentMethods([
   </div>
 
   <footer class="mkt-footer wrap">
-    <div class="foot-brand"><svg class="omni-logo" viewBox="0 0 184 72" role="img" aria-label="OMNI"><path class="omni-chain" d="M46 36 A18 18 0 1 1 28 18 A18 18 0 1 1 46 36 C52 40 56 46 58 54 L58 28 C58 18 68 16 74 24 L82 36 C86 42 90 42 94 36 L102 24 C108 16 114 18 114 28 L114 54 C114 60 120 60 122 54 L124 28 C125 18 134 16 141 23 L154 40 C160 48 164 44 164 34 L164 22 C164 15 173 15 173 24 L173 54"/></svg><span>Omni Financial Solutions · The payments side of Renda · Built by Renda Financial Technologies, Inc.</span></div>
+    <div class="foot-brand"><span class="omni-wordmark" role="img" aria-label="OMNI">OMNI</span><span>Omni Financial Solutions · The payments side of Renda · Built by Renda Financial Technologies, Inc.</span></div>
     <div class="foot-cols">
       <div><h4>Products</h4><a href="#hardware">Hardware</a><a href="#products">Point of sale</a><button data-view-link="checkout">Online checkout</button><button data-view-link="terminal">Terminal</button></div>
       <div><h4>Business types</h4><a href="#business-types">Food &amp; beverage</a><a href="#business-types">Retail</a><a href="#business-types">Beauty</a><a href="#business-types">Services</a></div>
@@ -398,7 +392,7 @@ checkout.paymentMethods([
 <section class="view" id="view-dashboard">
   <div class="dash-shell">
     <aside class="dash-side">
-      <div class="dash-brand"><svg class="omni-logo sm" viewBox="0 0 184 72" role="img" aria-label="OMNI"><path class="omni-chain" d="M46 36 A18 18 0 1 1 28 18 A18 18 0 1 1 46 36 C52 40 56 46 58 54 L58 28 C58 18 68 16 74 24 L82 36 C86 42 90 42 94 36 L102 24 C108 16 114 18 114 28 L114 54 C114 60 120 60 122 54 L124 28 C125 18 134 16 141 23 L154 40 C160 48 164 44 164 34 L164 22 C164 15 173 15 173 24 L173 54"/></svg></div>
+      <div class="dash-brand"><span class="omni-wordmark sm" role="img" aria-label="OMNI">OMNI</span></div>
       <div class="biz-switch"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=200&q=70&auto=format&fit=crop" alt=""><div><strong>Maple &amp; Main Café</strong><small>Toronto · Danforth</small></div><span>⌄</span></div>
       <nav class="dash-nav">
         <span class="nav-group">Sell</span>
@@ -561,7 +555,7 @@ checkout.paymentMethods([
       <!-- Customer side -->
       <div class="cust-device">
         <div class="cust-screen">
-          <div class="cust-brand"><svg class="omni-logo sm on-dark" viewBox="0 0 184 72" role="img" aria-label="OMNI"><path class="omni-chain" d="M46 36 A18 18 0 1 1 28 18 A18 18 0 1 1 46 36 C52 40 56 46 58 54 L58 28 C58 18 68 16 74 24 L82 36 C86 42 90 42 94 36 L102 24 C108 16 114 18 114 28 L114 54 C114 60 120 60 122 54 L124 28 C125 18 134 16 141 23 L154 40 C160 48 164 44 164 34 L164 22 C164 15 173 15 173 24 L173 54"/></svg><span>Maple &amp; Main Café</span></div>
+          <div class="cust-brand"><span class="omni-wordmark sm on-dark" role="img" aria-label="OMNI">OMNI</span><span>Maple &amp; Main Café</span></div>
 
           <div id="pay-state-idle">
             <span class="cust-amount" id="cust-amount">$0.00</span>

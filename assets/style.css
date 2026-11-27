@@ -3,6 +3,7 @@
    Outfit (display) · Inter (body) · JetBrains Mono (data)
    Ink #0B0E11 · Paper #FBFBF9 · Accent gradient indigo to violet to fuchsia
    ============================================================ */
+.omni-wordmark{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:31px;line-height:1;letter-spacing:-.055em;background:linear-gradient(92deg,#4F46E5,#9333EA 52%,#D946EF);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}.omni-wordmark.sm{font-size:23px}.omni-wordmark.lg{font-size:40px}
 :root{
   --ink:#0B0E11; --ink-2:#171C20; --ink-soft:#333A40; --muted:#3C4147;
   --paper:#FBFBF9; --paper-2:#F1F1EC; --card:#FFFFFF;
@@ -56,10 +57,10 @@ h1,h2,h3,h4{font-family:var(--font-d);letter-spacing:-.02em;line-height:1.08}
 .chip-btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink-soft)}
 
 /* ---------- topbar + view toggle ---------- */
-.topbar{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 28px;background:rgba(251,251,249,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.topbar{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:4px 28px;background:rgba(251,251,249,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
 .brand-sub{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-left:2px}
-.view-toggle{position:relative;display:flex;gap:2px;background:#E9E9E2;border-radius:999px;padding:4px}
-.vt-btn{position:relative;z-index:2;font-family:var(--font-d);font-weight:700;font-size:14px;padding:9px 20px;border-radius:999px;color:var(--ink-soft);transition:color .2s}
+.view-toggle{position:relative;display:flex;gap:2px;background:#E9E9E2;border-radius:999px;padding:3px}
+.vt-btn{position:relative;z-index:2;font-family:var(--font-d);font-weight:700;font-size:13.5px;padding:6px 18px;border-radius:999px;color:var(--ink-soft);transition:color .2s}
 .vt-btn.active{color:#fff}
 .vt-glider{position:absolute;z-index:1;top:4px;left:0;height:calc(100% - 8px);width:0;background:var(--ink);border-radius:999px;transition:left .32s cubic-bezier(.6,0,.2,1),width .32s cubic-bezier(.6,0,.2,1)}
 .top-actions{display:flex;align-items:center;gap:12px}
